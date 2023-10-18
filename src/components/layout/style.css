@@ -1,0 +1,132 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.layout-container {
+  background: url("../../assets/images/background.png");
+  height: 100vh;
+  /* width: 100%; */
+  display: flex;
+  position: relative;
+}
+
+
+
+.session-left {
+  background: url("../../assets/images/logo-vti.svg") no-repeat, url("../../assets/images/co-ngoc-tinh-hoa-text.svg") no-repeat;
+  background-position: 5% 5%, 90% 50%;
+  background-size: 30%;
+  height: 100%;
+  width: 50%;
+}
+
+.session-right {
+  height: 100%;
+  width: 50%;
+}
+
+.session-right .session-form {
+  background: url("../../assets/images/sub-background.png");
+  width: 60%;
+  height: 100%;
+  padding: 0 5%;
+}
+
+.session-right .session-form-border {
+  border: 3px solid white;
+  border-top: none;
+  padding-top: 10%;
+  height: 80%;
+  position: relative;
+}
+
+.session-form-content {
+  padding: 20px;
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.session-form-content>div {
+  position: relative;
+  padding: 20px;
+}
+
+.form-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+
+
+
+.bg-bottom {
+  background: url("../../assets/images/girl-danh-dan.png") no-repeat, url("../../assets/images/hoa-right.svg") no-repeat;
+  height: 100%;
+  width: 100%;
+  background-size: 100%, 25%;
+  background-position: left bottom, right bottom;
+  position: absolute;
+  z-index: 99;
+}
+
+.session-form-title {
+  color: white;
+    font-size: 35px;
+    line-height: 1.5em;
+}
+
+.session-form-title>p:nth-child(3) {
+  font-size: 12px;
+}
+
+@media only screen and (max-width: 900px) {
+  .session-left {
+    width: 25%;
+    background-position: 5% 5%, 90% 50%;
+    background-size: 70%;
+  }
+  
+  .session-right {
+    height: 100%;
+    width: 75%;
+  }
+
+  .session-right .session-form {
+    width: 100%;
+  }
+
+  .bg-bottom {
+    height: 100%;
+    width: 100%;
+    background-size: 100%, 30%;
+    background-position: left bottom, right bottom;
+    position: absolute;
+    z-index: 99;
+  }
+
+  .session-right .session-form-border {
+    height: 90%;
+    border: none;
+    padding: 10%;
+  }
+
+  .session-form {
+    padding: 0 !important;
+  }
+
+  .session-form-title {
+    margin-top: 30%;
+      font-size: 25px;
+  }
+}

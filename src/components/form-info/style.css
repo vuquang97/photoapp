@@ -1,0 +1,29 @@
+.form-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-input {
+  width: 45%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: white !important;
+}
+
+/* .form-input:focus-visible {
+  border: none !important;
+} */
+
+.form-select {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
