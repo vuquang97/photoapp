@@ -5,7 +5,7 @@
 
 .layout-container {
   background: url("../../assets/images/background.png");
-  height: 100vh;
+  height: 100%;
   /* width: 100%; */
   display: flex;
   position: relative;
@@ -38,16 +38,20 @@
   border-top: none;
   height: 80%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .session-form-content {
   padding: 20px;
-    position: absolute;
-    left: 0;
-    z-index: 100;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
+  /* position: absolute; */
+  left: 0;
+  z-index: 100;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .session-form-content>div {
@@ -81,12 +85,22 @@
 
 .session-form-title {
   color: white;
-    font-size: 35px;
-    line-height: 1.5em;
+  font-size: 35px;
+  line-height: 1.5em;
 }
 
-.pt-30p {
+/* .pt-30p {
   padding-top: 30%;
+} */
+
+.icon-loading {
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: bold;
+  color: red;
 }
 
 .pt-10p {
@@ -97,13 +111,25 @@
   font-size: 18px;
 }
 
+@media only screen and (max-width: 1600px) {
+  .session-form-title {
+    color: white;
+    font-size: 25px;
+    line-height: 1.5em;
+  }
+
+  .session-form-title>p:nth-child(3) {
+    font-size: 14px;
+  }
+}
+
 @media only screen and (max-width: 900px) {
   .session-left {
     width: 25%;
     background-position: 5% 5%, 90% 50%;
     background-size: 70%;
   }
-  
+
   .session-right {
     height: 100%;
     width: 75%;
@@ -126,7 +152,7 @@
     height: 90%;
     border: none;
     padding: 10%;
-   
+
   }
 
   .session-form {

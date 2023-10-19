@@ -1,22 +1,19 @@
 import "./style.css";
 
-
-
-const ImageResult = ({ formData={}, imgResult={}, imageSelect }) => {
-
-
-
-  const image = `data:${imageSelect?.type || 'image/jpg'};base64,${imgResult?.image}`
-
+const ImageResult = ({ formData = {}, imgResult = {}, imageSelect }) => {
+  const image = `data:${imageSelect?.type || "image/jpg"};base64,${
+    imgResult?.image
+  }`;
 
   return (
     <>
       <div className="form-title">Kết quả</div>
-      <div className="result-detail">Chúc mừng tỉ tỉ {formData.lastName} {formData.firstName} đã xuyên không thành công cùng bộ trang phục {imgResult.name}</div>
-      
-      <div
-        style={{ display: "flex", justifyContent: "center" }}
-      >
+      <div className="result-detail">
+        Chúc mừng tỉ tỉ {formData.lastName} {formData.firstName} đã xuyên không
+        thành công cùng bộ trang phục {imgResult.name}
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <img
           src={image}
           alt=""
@@ -25,9 +22,13 @@ const ImageResult = ({ formData={}, imgResult={}, imageSelect }) => {
         />
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-      <a href={image} download  className="btn-update mt-20"
-          style={{ textDecoration: 'none' }}>
-        Tải ảnh
+        <a
+          href={image}
+          download
+          className="btn-update mt-20"
+          style={{ textDecoration: "none" }}
+        >
+          Tải ảnh
         </a>
         {/* <FacebookShareButton
          className="btn-update mt-20"
@@ -44,7 +45,6 @@ const ImageResult = ({ formData={}, imgResult={}, imageSelect }) => {
           Chia sẻ ngay
         </div>
     </FacebookShareButton> */}
-
       </div>
     </>
   );

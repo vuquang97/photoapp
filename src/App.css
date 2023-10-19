@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .form-title {
@@ -27,7 +28,7 @@
   cursor: pointer;
 }
 
-input:focus{
+input:focus {
   outline: none;
 }
 
@@ -35,23 +36,10 @@ input {
   font-size: 18px;
 }
 
-select:focus{
+select:focus {
   outline: none;
 }
 
-select  {
+select {
   font-size: 18px;
 }
-
-.icon-loading {
-  position: absolute;
-  z-index: 999;
-  top: 0;
-  right: 30%;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-

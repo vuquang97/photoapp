@@ -1,13 +1,10 @@
-import logo from "./logo.svg";
+import { useState } from "react";
 import "./App.css";
-import Layout from "./components/layout";
 import FormInfo from "./components/form-info";
-import UploadButton from "./components/upload-button";
 import ImageResult from "./components/image-result";
-import { useEffect, useRef, useState } from "react";
-import { FacebookIcon, FacebookShareButton } from "react-share";
+import Layout from "./components/layout";
+import UploadButton from "./components/upload-button";
 import { postData } from "./utils";
-import iconLoading from './assets/images/icon_loading.gif'
 
 function App() {
   const [imageSelect, setImageSelect] = useState(null);
@@ -15,41 +12,42 @@ function App() {
   const [imgResult, setImgResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  
-
   const handleSubmitImage = async (imgUpload) => {
     setImageSelect(imgUpload);
-    const formData = new FormData()
-    formData.append('image', imgUpload)
-    setIsLoading(true)
-    const res = await postData(formData)
+    const formData = new FormData();
+    formData.append("image", imgUpload);
+    setIsLoading(true);
+    const res = await postData(formData);
 
     setImgResult({
       name: res?.data?.name_clothing,
-      image: res?.data?.image
-    })
-    setIsLoading(false)
+      image: res?.data?.image,
+    });
+    setIsLoading(false);
   };
 
   const handleSubmitForm = (data) => {
     setFormData(data);
   };
 
-
   return (
     <div className="App">
-      <Layout imgResult={imgResult?.name}>
+      <Layout imgResult={imgResult?.name} isLoading={isLoading}>
         {!formData && <FormInfo onSubmit={handleSubmitForm} />}
-        {formData && !imageSelect ||isLoading ? (
+        {(formData && !imageSelect) || isLoading ? (
           <UploadButton onSubmit={handleSubmitImage} />
         ) : (
           ""
         )}
-        {isLoading&& <div className="icon-loading">
-          <img src={iconLoading} alt=""  />
-          Đang xuyên không..... 99%
-          </div>} 
-        {imgResult?.name ? <ImageResult formData={formData} imgResult={imgResult} imageSelect={imageSelect} /> : ""}
+        {imgResult?.name ? (
+          <ImageResult
+            formData={formData}
+            imgResult={imgResult}
+            imageSelect={imageSelect}
+          />
+        ) : (
+          ""
+        )}
       </Layout>
     </div>
   );
