@@ -6,51 +6,50 @@ import UploadButton from "./components/upload-button";
 import ImageResult from "./components/image-result";
 import { useEffect, useRef, useState } from "react";
 import { FacebookIcon, FacebookShareButton } from "react-share";
+import { postData } from "./utils";
+import iconLoading from './assets/images/icon_loading.gif'
 
 function App() {
-  const [imageData, setImageData] = useState(null);
+  const [imageSelect, setImageSelect] = useState(null);
   const [formData, setFormData] = useState(null);
+  const [imgResult, setImgResult] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   
 
-  const url = 'https://via.placeholder.com/150'
+  const handleSubmitImage = async (imgUpload) => {
+    setImageSelect(imgUpload);
+    const formData = new FormData()
+    formData.append('image', imgUpload)
+    setIsLoading(true)
+    const res = await postData(formData)
 
-  // useEffect(() => {
-  //   (function(d, s, id) {
-  //     var js, fjs = d.getElementsByTagName(s)[0];
-  //     console.log('xxxxccc111 --- ', d, s, id);
-
-  //     console.log('xxxxccc --- ', js, fjs);
-  //     if (
-  //     d.getElementById(id)) return;
-  //     js = d.createElement(s); js.id = id;
-      
-  //     js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-      
-  //     fjs.parentNode.insertBefore(js, fjs);
-  //     }(document, 'script', 'facebook-jssdk'));
-  // }, [])
-
-  console.log('preview --- ', imageData);
-
-
-  const handleSubmitImage = ({ imgUpload, preview }) => {
-    setImageData({ imgUpload, preview });
+    setImgResult({
+      name: res?.data?.name_clothing,
+      image: res?.data?.image
+    })
+    setIsLoading(false)
   };
 
   const handleSubmitForm = (data) => {
     setFormData(data);
   };
 
+
   return (
     <div className="App">
-      <Layout>
+      <Layout imgResult={imgResult?.name}>
         {!formData && <FormInfo onSubmit={handleSubmitForm} />}
-        {formData && !imageData ? (
+        {formData && !imageSelect ||isLoading ? (
           <UploadButton onSubmit={handleSubmitImage} />
         ) : (
           ""
         )}
-        {imageData ? <ImageResult imageData={imageData} /> : ""}
+        {isLoading&& <div className="icon-loading">
+          <img src={iconLoading} alt=""  />
+          Đang xuyên không..... 99%
+          </div>} 
+        {imgResult?.name ? <ImageResult formData={formData} imgResult={imgResult} imageSelect={imageSelect} /> : ""}
       </Layout>
     </div>
   );

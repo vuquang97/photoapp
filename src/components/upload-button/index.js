@@ -5,6 +5,7 @@ import arrowRightIcon from "../../assets/images/arrow-right.svg";
 
 import { useEffect, useState } from "react";
 
+
 const UploadButton = ({ onSubmit }) => {
   const [imgUpload, setimgUpload] = useState();
   const [preview, setPreview] = useState();
@@ -23,14 +24,22 @@ const UploadButton = ({ onSubmit }) => {
     return () => URL.revokeObjectURL(objectUrl);
   }, [imgUpload]);
 
-  const onUpload = (e) => {
+  const onUpload =  async(e) => {
     if (!e.target.files || e.target.files.length === 0) {
       setimgUpload(undefined);
       return;
     }
 
-    setimgUpload(e.target.files[0]);
+    const image = e.target.files[0]
+
+
+
+
+
+    setimgUpload(image);
+   
   };
+
 
   const imgPreview = (
     <div className="preview-section">
@@ -61,8 +70,18 @@ const UploadButton = ({ onSubmit }) => {
   return (
     <>
       <div className="form-title">
-        Gương mặt bạn phù hợp với trang phục truyền thống nào của Việt Nam
+        {
+          preview ? 'Sẵn sàng xuyên không' : 'Gương mặt bạn phù hợp với trang phục truyền thống nào của Việt Nam'
+        }
       </div>
+      {/* <img
+        src={"data:image/png;base64," + imgResutl}
+        alt=""
+        width={328}
+        height={328}
+
+        style={{ fill: "#C66BC6", marginRight: '5%' }}
+      /> */}
       <input
         type="file"
         id="imgupload"
@@ -73,7 +92,7 @@ const UploadButton = ({ onSubmit }) => {
         <div className="upload-button mt-20">
           
           {preview ? imgPreview : <><img src={uploadIcon} alt="" />
-          <div className=" bg-white">Tải lên ảnh chân dung rõ nét của bạn</div></>}
+          <div className=" bg-white">Tải chân dung ngọc nữ</div></>}
         </div>
       </label>
 
@@ -81,11 +100,11 @@ const UploadButton = ({ onSubmit }) => {
         className="btn-update mt-20"
         onClick={() => {
           if (imgUpload) {
-            onSubmit({ imgUpload, preview })
+            onSubmit(imgUpload)
           }
         }}
       >
-        Thử ngay
+        Hô biến
       </div>
     </>
   );

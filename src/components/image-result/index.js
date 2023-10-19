@@ -1,59 +1,35 @@
-import { useEffect, useRef } from "react";
-import { FacebookShareButton } from "react-share";
 import "./style.css";
 
-const ImageResult = ({ imageData }) => {
 
-  const shareButton = useRef(null);
 
-  const handleDownLoad = (blob) => {
-    console.log("blob --- ", blob);
-    // Create a temporary anchor element
-    // const url = window.URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = blob;
+const ImageResult = ({ formData={}, imgResult={}, imageSelect }) => {
 
-    // Extract the filename from the URL
-    const filename = "image";
 
-    // Set the download attribute and filename
-    link.setAttribute("download", filename);
-    document.body.appendChild(link);
 
-    // Simulate a click on the anchor element to start the download
-    link.click();
+  const image = `data:${imageSelect?.type || 'image/jpg'};base64,${imgResult?.image}`
 
-    // Clean up the temporary anchor element
-    link.parentNode.removeChild(link);
-  };
-  
 
   return (
     <>
       <div className="form-title">Kết quả</div>
-      <div>BẠN LÀ NHÂN VẬT ABC XYZ, THỜI NHÀ XXX .............</div>
+      <div className="result-detail">Chúc mừng tỉ tỉ {formData.lastName} {formData.firstName} đã xuyên không thành công cùng bộ trang phục {imgResult.name}</div>
       
       <div
         style={{ display: "flex", justifyContent: "center" }}
-        className="mt20"
       >
         <img
-          src={imageData?.preview}
+          src={image}
           alt=""
-          width={200}
-          height={250}
+          className="img-result"
           style={{ borderRadius: 5 }}
         />
       </div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div
-          className="btn-update mt-20"
-          style={{ width: "40%" }}
-          onClick={() => handleDownLoad(imageData?.preview)}
-        >
-          Tải ảnh
-        </div>
-        <FacebookShareButton
+      <a href={image} download  className="btn-update mt-20"
+          style={{ textDecoration: 'none' }}>
+        Tải ảnh
+        </a>
+        {/* <FacebookShareButton
          className="btn-update mt-20"
          style={{ background: "#C66BC6", width: "40%" }}
       ref={shareButton}
@@ -67,7 +43,7 @@ const ImageResult = ({ imageData }) => {
         >
           Chia sẻ ngay
         </div>
-    </FacebookShareButton>
+    </FacebookShareButton> */}
 
       </div>
     </>

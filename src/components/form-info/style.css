@@ -5,12 +5,14 @@
 }
 
 .form-input {
-  width: 45%;
+  width: 44%;
   height: 40px;
   border-radius: 5px;
   border: none;
   background-color: white !important;
+  padding: 0 10px;
 }
+
 
 /* .form-input:focus-visible {
   border: none !important;
@@ -26,4 +28,11 @@
 
 .mt-20 {
   margin-top: 20px;
+}
+
+@media only screen and (max-width: 900px) {
+  .form-input {
+    width: 40%;
+  }
+  
 }

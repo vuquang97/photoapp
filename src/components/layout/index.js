@@ -1,13 +1,13 @@
 import "./style.css";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, imgResult }) => {
   return (
     <div className="layout-container">
       <div className="session-left"></div>
       <div className="session-right">
         <div className="session-form">
           <div className="session-form-border">
-            <div className="session-form-title">
+            <div className={`session-form-title ${imgResult ? "pt-10p" : "pt-30p"} `}>
               <p>Chúc Mừng</p>
               <p>Ngày Phụ Nữ Việt Nam 20/10</p>
               <p>Minigame Ngọc Nữ Xuyên Không</p>
