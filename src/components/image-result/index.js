@@ -1,7 +1,7 @@
 import "./style.css";
 
 const ImageResult = ({ formData = {}, imgResult = {}, imageSelect }) => {
-  const image = `data:${imageSelect?.type || "image/jpg"};base64,${
+  const image = `data:image/jpg;base64,${
     imgResult?.image
   }`;
 
